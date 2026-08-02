@@ -16,9 +16,9 @@ const NavBar = () => {
   return (
     <div className="container">
       <header className="header">
-        <span className="logo">
+        <button className="logo" onClick={() => setActive("Home")}>
           bread<span className="ify">ify</span>
-        </span>
+        </button>
 
         <nav>
           <ul>
@@ -38,7 +38,7 @@ const NavBar = () => {
 
         <div>
           <button className="login">log in</button>
-          <button>sign up</button>
+          <button className="signup">sign up</button>
         </div>
       </header>
     </div>
