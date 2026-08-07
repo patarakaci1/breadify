@@ -1,11 +1,11 @@
 import React from "react";
-import sandwichImage from "../../assets/sandwich.jpg";
-import "./Home.css";
+import sandwichImage from "../../assets/images/sandwich.jpg";
+import "./Hero.css";
 
-const Home = () => {
+const Hero = () => {
   return (
     <div>
-      <div className="home-container container">
+      <div className="entry-container container">
         <div className="hero-text">
           <h1 className="title">
             FAST FOOD THAT'S ACTUALLY <span className="good">GOOD</span> FOR YOU
@@ -23,14 +23,8 @@ const Home = () => {
           <img src={sandwichImage} alt="sandwich" />
         </div>
       </div>
-      {/* second container with overlay */}
-      <div className="hero-container container">
-        <div className="hero-overlay">
-          <p>Order Now</p>
-        </div>
-      </div>
     </div>
   );
 };
 
-export default Home;
+export default Hero;
