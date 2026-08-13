@@ -1,7 +1,7 @@
 import React from "react";
 import sandwichImage from "../../assets/images/sandwich.jpg";
 import "./Hero.css";
-
+import spinach from "../../assets/images/spinach.jpg";
 const Hero = () => {
   return (
     <div>
@@ -21,6 +21,9 @@ const Hero = () => {
         </div>
         <div className="hero-image">
           <img src={sandwichImage} alt="sandwich" />
+        </div>
+        <div className="spinach">
+          <img src={spinach} alt="sandwich" />
         </div>
       </div>
     </div>
