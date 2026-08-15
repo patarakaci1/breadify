@@ -1,3 +1,19 @@
+@import url(https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap);
+
+:root {
+  --main-color: #ec0c0c;
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+   font-family: "Arimo", sans-serif;
+   
+}
+.container{
+    max-width: 1200px;
+    margin: auto;
+}
 .App {
   text-align: center;
 }
