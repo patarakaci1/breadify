@@ -35,7 +35,14 @@ const Card = ({
           className={`card__btn ${inCart ? "card__btn--remove" : "card__btn--add"}`}
           onClick={onToggleCart}
         >
-          {inCart ? "− Remove from cart" : "+ Add to cart"}
+          {inCart ? (
+            "− Remove from cart"
+          ) : (
+            <>
+              <span className="card__btn-icon">+</span>
+              Add to cart
+            </>
+          )}
         </button>
       </div>
     </div>
