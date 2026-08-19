@@ -1,7 +1,9 @@
 .meal-list {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 16px;
+  margin-bottom: 30px;
 }
 
 .meal-filters {
@@ -39,4 +41,31 @@
 
 .meal-message {
   text-align: center;
+}
+.meal-title{
+    text-align: center;
+    margin: 20px 0 20px;
+}
+.meal-title span{
+    color: var(--main-color);
+}
+.meal-subtitle {
+  max-width: 480px; 
+  margin: 8px auto 0;
+  line-height: 1.5;
+  text-align: center;
+  color: #666;
+  margin: 20px 0 20px;
+}
+.tomato{
+  position: absolute;
+  top: -30px;
+  left: 70%;
+  object-fit: cover;
+  z-index: 1;
+}
+.tomato img{
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
 }

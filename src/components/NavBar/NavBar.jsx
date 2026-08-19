@@ -35,8 +35,7 @@ const NavBar = () => {
         </nav>
 
         <div>
-          <button className="login">log in</button>
-          <button className="signup">sign up</button>
+          <button className="order-btn">order now </button>
         </div>
       </header>
     </div>

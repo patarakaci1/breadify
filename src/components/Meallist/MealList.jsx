@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Card from "../card/Card";
 import Constants from "../../constants/Constants";
 import "./MealList.css";
+import tomato from "../../assets/images/tomato.jpg";
 
 const mockExtras = (idMeal) => {
   const seed = parseInt(idMeal, 10);
@@ -102,8 +103,19 @@ const MealList = () => {
 
   return (
     <div className="meal-list">
-      <h1 className="meal-title">Sandwiches</h1>
+      <div className="tomato">
+        <img src={tomato} alt="tomato" />
+      </div>
+      <div className=" container">
+        <h1 className="meal-title">
+          Built for <span>YOU</span>
+        </h1>
 
+        <p className="meal-subtitle">
+          Crafted with premium ingredients and layered to perfection, every bite
+          is a masterpiece of flavor.
+        </p>
+      </div>
       <div className="meal-filters container">
         {Constants.FILTERS.map((f) => (
           <button
