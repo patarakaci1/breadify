@@ -1,0 +1,32 @@
+.review-container {
+  background: #d91e1e;
+  border-radius: 16px;
+  padding: 40px 32px;
+}
+
+.review-title {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 32px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 24px;
+}
+
+.pagination span {
+  width: 8px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.5); /* inactive: small, faded white */
+  cursor: pointer;
+  transition: width 0.3s ease, background 0.3s ease;
+}
+
+.pagination span.active {
+  width: 28px;
+  background: #fff; /* active: long, solid white */
+}

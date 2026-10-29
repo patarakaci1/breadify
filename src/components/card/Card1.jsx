@@ -17,11 +17,11 @@ const Card1 = ({ review = {} }) => {
 
   return (
     <div className="review-card">
-      <p className="review-card__text">{text}</p>
+      <p className="review-card__text">{text}lorem oasmfnasfnaspdnalsnfda;nflaknflafnal</p>
 
       <div className="review-card__header">
-        <h3 className="review-card__name">{userNickname}</h3>
-        <span className="review-card__date">{date}</span>
+        <h3 className="review-card__name">{userNickname}lasha</h3>
+        <span className="review-card__date">{date}02.02.02</span>
       </div>
 
       <div className="review-card__ratings">

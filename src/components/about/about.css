@@ -17,7 +17,7 @@
   background-blend-mode: multiply;
   border-radius: 20px;
   position: relative;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .about-container::before {

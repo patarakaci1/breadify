@@ -3,14 +3,14 @@ import "./Home.css";
 import Hero from "../../components/Hero/Hero";
 import About from "../../components/about/About";
 import MealList from "../../components/Meallist/MealList";
-import Card1 from "../../components/card/Card1";
+import Review from "../../components/reviewPage/Review";
 const Home = () => {
   return (
     <div>
       <Hero />
       <About />
       <MealList />
-      <Card1 />
+      <Review />
     </div>
   );
 };
