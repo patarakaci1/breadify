@@ -1,0 +1,34 @@
+.happy-moments {
+  padding: 30px 20px;
+}
+
+.happy-moments-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.happy-moments-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 100px;
+  gap: 12px;
+  margin: 0 auto;
+}
+
+.happy-moments-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.happy-moments-grid img:nth-child(1),
+.happy-moments-grid img:nth-child(4) {
+  grid-row: span 2;
+}
+
+.happy-moments-grid img:nth-child(2),
+.happy-moments-grid img:nth-child(3) {
+  grid-row: span 1;
+}
+

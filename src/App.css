@@ -10,6 +10,17 @@
    font-family: "Arimo", sans-serif;
    
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+#home,
+#about,
+#rates {
+  scroll-margin-top: 100px;
+}
+
 .container{
     max-width: 1200px;
     margin: auto;

@@ -1,5 +1,11 @@
 .review-container {
-  background: #d91e1e;
+  background-color: #d91e1e;
+  background-image:
+    linear-gradient(rgba(217, 30, 30, 0.75), rgba(217, 30, 30, 0.75)),
+    url('../../assets/images/pizza2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   border-radius: 16px;
   padding: 40px 32px;
 }
@@ -10,6 +16,44 @@
   margin-bottom: 32px;
 }
 
+.reviews-grid {
+  display: grid;
+  gap: 0;
+}
+
+.reviews-grid.count-3 {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  grid-template-rows: auto auto;
+}
+
+.reviews-grid.count-3 > :nth-child(1) {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+}
+
+.reviews-grid.count-3 > :nth-child(2) {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.reviews-grid.count-3 > :nth-child(3) {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.reviews-grid.count-2 {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);}
+
+.reviews-grid.count-1 {
+  grid-template-columns: 1fr;
+}
+
+.reviews-grid > * {
+  width: auto;
+  height: 100%;
+  margin: 0;
+}
+
 .pagination {
   display: flex;
   justify-content: center;
@@ -18,15 +62,16 @@
 }
 
 .pagination span {
-  width: 8px;
-  height: 4px;
+  width: 12px;
+  height: 8px;
   border-radius: 2px;
-  background: rgba(255, 255, 255, 0.5); /* inactive: small, faded white */
+  background: rgba(255, 255, 255, 0.5);
   cursor: pointer;
   transition: width 0.3s ease, background 0.3s ease;
 }
 
 .pagination span.active {
-  width: 28px;
-  background: #fff; /* active: long, solid white */
+  width: 30px;
+  border-radius: 4px;
+  background: #fff;
 }
