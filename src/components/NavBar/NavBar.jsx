@@ -1,7 +1,8 @@
 
 import React, { useState } from "react";
 import "./NavBar.css";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 const NavBar = () => {
   const [active, setActive] = useState("Home");
 
@@ -52,7 +53,11 @@ const NavBar = () => {
         </nav>
 
         <div>
-          <button className="order-btn">Order Now</button>
+          <button className="order-btn"><FontAwesomeIcon icon={faCartShopping} />
+            <div className="cart-number">
+              3
+            </div>
+          </button>
         </div>
       </header>
     </div>

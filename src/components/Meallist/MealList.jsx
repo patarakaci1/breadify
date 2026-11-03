@@ -26,7 +26,11 @@ const truncate = (text, max = 110) =>
   text && text.length > max ? text.slice(0, max).trim() + "…" : text;
 
 const MealList = () => {
-  const [meals, setMeals] = useState([]);
+  const [meals, setMeals] = useState(
+    /** @type {{ idMeal: string; strMeal: string; strMealThumb: string; strInstructions: string }[]} */ (
+      []
+    ),
+  );
   const [cart, setCart] = useState({});
   const [status, setStatus] = useState("loading");
   const [visibleCount, setVisibleCount] = useState(Constants.INITIAL_VISIBLE);
@@ -82,7 +86,7 @@ const MealList = () => {
   }
 
   const mealsWithExtras = meals.map((meal) => ({
-    ...meal,
+    ...(meal && typeof meal === "object" ? meal : {}),
     extras: mockExtras(meal.idMeal),
   }));
 
@@ -93,7 +97,7 @@ const MealList = () => {
           (meal) => meal.extras.badge.toLowerCase() === filter.toLowerCase(),
         );
 
-  const visibleMeals = filteredMeals.slice(0, visibleCount);
+  const visibleMeals = filteredMeals.slice(0, visibleCount);//1,2,3
 
   const hasMore = visibleCount < filteredMeals.length;
 
