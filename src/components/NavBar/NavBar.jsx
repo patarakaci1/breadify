@@ -1,10 +1,12 @@
-
-import React, { useState } from "react";
+import { useState } from "react";
 import "./NavBar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { useShoppingCart } from "../../context/ShoppingCartContext";
+
 const NavBar = () => {
   const [active, setActive] = useState("Home");
+  const { cartQuantity } = useShoppingCart();
 
   const NAV_LINKS = [
     { label: "Home", href: "#home" },
@@ -24,8 +26,8 @@ const NavBar = () => {
   };
 
   return (
-    <div className="container">
-      <header className="header">
+    <header className="header">
+      <div className="container header__inner">
         <button
           className="logo"
           onClick={() => handleNavigation("Home", "#home")}
@@ -53,14 +55,15 @@ const NavBar = () => {
         </nav>
 
         <div>
-          <button className="order-btn"><FontAwesomeIcon icon={faCartShopping} />
-            <div className="cart-number">
-              3
-            </div>
-          </button>
+          {cartQuantity > 0 && (
+            <button className="order-btn">
+              <FontAwesomeIcon icon={faCartShopping} />
+              <div className="cart-number">{cartQuantity}</div>
+            </button>
+          )}
         </div>
-      </header>
-    </div>
+      </div>
+    </header>
   );
 };
 
