@@ -1,7 +1,7 @@
-button{
-  cursor:pointer;
+button {
+  cursor: pointer;
 }
-.card {
+.meal-card {
   display: flex;
   align-items: center;
   gap: 20px;
@@ -115,7 +115,7 @@ button{
   padding: 6px;
   border-radius: 10px;
   font-size: 15px;
-  border:none;
+  border: none;
 }
 
 .card__btn--add {
@@ -131,21 +131,21 @@ button{
   width: 30px;
   font-size: 18px;
   background-color: white;
-  color:black;
-  border:1px solid black;
-  font-weight:bold;
+  color: black;
+  border: 1px solid black;
+  font-weight: bold;
 }
-.left{
-  margin-left:0 important;
-  margin-right:5px ;
+.left {
+  margin-left: 0 important;
+  margin-right: 5px;
 }
-.card__btn-icon-1{
+.card__btn-icon-1 {
   margin-left: 5px;
   padding: 2px;
   border-radius: 6px;
   width: 30px;
   font-size: 20px;
   background-color: var(--main-color);
-  color:white;
-  font-weight:bold;
+  color: white;
+  font-weight: bold;
 }

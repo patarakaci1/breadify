@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import "./HappyMoments.css";
 
@@ -8,28 +7,36 @@ const HappyMoments = () => {
   useEffect(() => {
     const getFood = async () => {
       try {
-        const requests = Array.from({ length: 10 }, (_, i) =>
-          fetch(`https://chinese-food-db.p.rapidapi.com/${i + 1}`, {
+        const response = await fetch(
+          "https://burgers-hub.p.rapidapi.com/burgers",
+          {
             method: "GET",
             headers: {
-              "x-rapidapi-key": "ee8d628f6cmsh5de295c122cd2a9p100c28jsn7151cacd429c",
-              "x-rapidapi-host": "chinese-food-db.p.rapidapi.com",
+              "x-rapidapi-key":
+                "ee8d628f6cmsh5de295c122cd2a9p100c28jsn7151cacd429c",
+              "x-rapidapi-host": "burgers-hub.p.rapidapi.com",
             },
-          })
+          },
         );
 
-        const responses = await Promise.all(requests);
+        if (!response.ok) {
+          throw new Error(`Api error ${response.status}`);
+        }
 
-        const data = await Promise.all(
-          responses.map((response) => {
-            if (!response.ok) {
-              throw new Error(`API Error: ${response.status}`);
-            }
-            return response.json();
-          })
+        const data = await response.json();
+        console.log(data); // check the structure and the image field name
+
+        const burgers = Array.isArray(data) ? data : data.burgers || [];
+
+        setImages(
+          burgers
+            .map(
+              (burger) =>
+                burger.image || burger.images?.[0]?.lg || burger.images?.[0],
+            )
+            .filter(Boolean)
+            .slice(0, 10),
         );
-
-        setImages(data.map((food) => food.image).filter(Boolean));
       } catch (error) {
         console.error(error);
       }
@@ -44,7 +51,13 @@ const HappyMoments = () => {
 
       <div className="happy-moments-grid">
         {images.map((image, index) => (
-          <img key={index} src={image} alt="Chinese food" />
+          <img
+            key={index}
+            src={image}
+            alt="Chinese food"
+            referrerPolicy="no-referrer"
+            loading="lazy"
+          />
         ))}
       </div>
     </section>

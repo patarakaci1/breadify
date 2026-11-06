@@ -8,41 +8,40 @@ export const useShoppingCart = () => {
 
 export function ShoppingCartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
-  const [isOpen,setIsOpen] = useState(false);
-  //its summing all the items with reduce starting from 0 
-  const cartQuantity = cartItems.reduce((quantity,item) => item.quantity + quantity,0);
+  const [isOpen, setIsOpen] = useState(false);
+  //its summing all the items with reduce starting from 0
+  const cartQuantity = cartItems.reduce(
+    (quantity, item) => item.quantity + quantity,
+    0,
+  );
 
   const openCart = () => setIsOpen(true);
   const closeCart = () => setIsOpen(false);
 
   function getItemQuantity(id) {
-    return cartItems.find(item => item.id === id)?.quantity || 0; //if quantity give me show quantity if not 0
+    return cartItems.find((item) => item.id === id)?.quantity || 0; //if quantity give me show quantity if not 0
   }
 
-  function increaseCartQuantity(id) {
-    setCartItems(curItems => {
-      //find is searching itemas which are equal to id
-      if (curItems.find(item => item.id === id) == null) { //if item we want has id null its doing this
-        return [...curItems, { id, quantity: 1 }]; //first rendring rest,then adding item if there isnt any
+  function increaseCartQuantity(id, details) {
+    setCartItems((curItems) => {
+      if (curItems.find((item) => item.id === id) == null) {
+        return [...curItems, { id, quantity: 1, ...details }];
       } else {
-        return curItems.map(item => {
-          if (item.id === id) { //item that was added
-            return { ...item, quantity: item.quantity + 1 }; //adding +1 quantity if item is already there
-          } else {
-            return item; //rendering whatever is in dat
-          }
-        });
+        return curItems.map((item) =>
+          item.id === id ? { ...item, quantity: item.quantity + 1 } : item,
+        );
       }
     });
   }
 
   function decreaseCartQuantity(id) {
-    setCartItems(curItems => {
+    setCartItems((curItems) => {
       //find is searching itemas which are equal to id
-      if (curItems.find(item => item.id === id)?.quantity === 1) { //if item we have found has quantity 1
-        return curItems.filter(item => item.id !== id); //filter is ridding it off. item.id !== id leaving items that arent that item id
+      if (curItems.find((item) => item.id === id)?.quantity === 1) {
+        //if item we have found has quantity 1
+        return curItems.filter((item) => item.id !== id); //filter is ridding it off. item.id !== id leaving items that arent that item id
       } else {
-        return curItems.map(item => {
+        return curItems.map((item) => {
           if (item.id === id) {
             return { ...item, quantity: item.quantity - 1 };
           } else {
@@ -53,11 +52,9 @@ export function ShoppingCartProvider({ children }) {
     });
   }
 
-
-
   function removeFromCart(id) {
-    setCartItems(curItems => {
-      return curItems.filter(item => item.id !== id); //filter is ridding it off. item.id !== id leaving items that arent that item id
+    setCartItems((curItems) => {
+      return curItems.filter((item) => item.id !== id); //filter is ridding it off. item.id !== id leaving items that arent that item id
     });
   }
 
@@ -71,10 +68,12 @@ export function ShoppingCartProvider({ children }) {
         cartQuantity,
         cartItems,
         openCart,
-        closeCart
+        closeCart,
+        isOpen,
       }}
     >
       {children}
+      {/* <ShoppingCart isOpen={isOpen} /> */}
     </ShoppingCartContext.Provider>
   );
 }

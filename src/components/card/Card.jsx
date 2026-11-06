@@ -27,7 +27,7 @@ const Card = ({
   const quantity = getItemQuantity(id);
 
   return (
-    <div className="card container">
+    <div className="meal-card container">
       <img src={image} alt={title} className="card__image" />
 
       <div className="card__info">
@@ -49,7 +49,7 @@ const Card = ({
           {quantity === 0 ? (
             <button
               className="card__btn"
-              onClick={() => increaseCartQuantity(id)}
+              onClick={() => increaseCartQuantity(id, { image, title, price })}
             >
               <span className="card__btn-icon-1">+</span>Add to cart
             </button>

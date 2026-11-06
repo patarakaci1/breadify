@@ -6,7 +6,7 @@ import { useShoppingCart } from "../../context/ShoppingCartContext";
 
 const NavBar = () => {
   const [active, setActive] = useState("Home");
-  const { cartQuantity } = useShoppingCart();
+  const { cartQuantity, openCart } = useShoppingCart();
 
   const NAV_LINKS = [
     { label: "Home", href: "#home" },
@@ -56,7 +56,7 @@ const NavBar = () => {
 
         <div>
           {cartQuantity > 0 && (
-            <button className="order-btn">
+            <button className="order-btn" onClick={openCart}>
               <FontAwesomeIcon icon={faCartShopping} />
               <div className="cart-number">{cartQuantity}</div>
             </button>

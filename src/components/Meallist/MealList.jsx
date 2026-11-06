@@ -27,11 +27,8 @@ const truncate = (text, max = 110) =>
 
 const MealList = () => {
   const [meals, setMeals] = useState(
-    /** @type {{ idMeal: string; strMeal: string; strMealThumb: string; strInstructions: string }[]} */ (
-      []
-    ),
+    /** @type {{ idMeal: string; strMeal: string; strMealThumb: string; strInstructions: string }[]} */ ([]),
   );
-  const [cart, setCart] = useState({});
   const [status, setStatus] = useState("loading");
   const [visibleCount, setVisibleCount] = useState(Constants.INITIAL_VISIBLE);
   const [filter, setFilter] = useState("all");
@@ -64,13 +61,6 @@ const MealList = () => {
     };
   }, []);
 
-  const toggleCart = (id) => {
-    setCart((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }));
-  };
-
   if (status === "loading") {
     return <p className="meal-message">Loading sandwiches…</p>;
   }
@@ -97,7 +87,7 @@ const MealList = () => {
           (meal) => meal.extras.badge.toLowerCase() === filter.toLowerCase(),
         );
 
-  const visibleMeals = filteredMeals.slice(0, visibleCount);//1,2,3
+  const visibleMeals = filteredMeals.slice(0, visibleCount); //1,2,3
 
   const hasMore = visibleCount < filteredMeals.length;
 
@@ -143,6 +133,7 @@ const MealList = () => {
         visibleMeals.map((meal) => (
           <Card
             key={meal.idMeal}
+            id={meal.idMeal}
             image={meal.strMealThumb}
             title={meal.strMeal}
             description={truncate(meal.strInstructions)}
@@ -150,8 +141,6 @@ const MealList = () => {
             calories={meal.extras.calories}
             protein={meal.extras.protein}
             price={meal.extras.price}
-            inCart={!!cart[meal.idMeal]}
-            onToggleCart={() => toggleCart(meal.idMeal)}
           />
         ))
       )}
