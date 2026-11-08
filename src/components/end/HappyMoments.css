@@ -10,7 +10,8 @@
 .happy-moments-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 100px;
+  grid-auto-rows: 160px;
+  grid-auto-flow: dense;
   gap: 12px;
   margin: 0 auto;
 }
@@ -31,4 +32,3 @@
 .happy-moments-grid img:nth-child(3) {
   grid-row: span 1;
 }
-

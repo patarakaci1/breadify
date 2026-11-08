@@ -3,6 +3,12 @@ import sandwichImage from "../../assets/images/sandwich.jpg";
 import "./Hero.css";
 import spinach from "../../assets/images/spinach.jpg";
 const Hero = () => {
+  const scrollTo = (id) => {
+    document.getElementById(id)?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
   return (
     <div>
       <div className="entry-container container">
@@ -15,8 +21,12 @@ const Hero = () => {
             craving.
           </p>
           <div className="hero-buttons">
-            <button className="btn-primary">Explore Menu →</button>
-            <button className="btn-secondary">Our Story</button>
+            <button className="btn-primary" onClick={() => scrollTo("rates")}>
+              Explore Menu →
+            </button>
+            <button className="btn-secondary" onClick={() => scrollTo("about")}>
+              Our Story
+            </button>
           </div>
         </div>
         <div className="hero-image">
