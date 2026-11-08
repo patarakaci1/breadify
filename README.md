@@ -1,5 +1,5 @@
 # Breadify 🥪
-
+🔗 **Live demo:** (https://breadify-itno-pi.vercel.app)
 Breadify is a responsive sandwich restaurant website built with React. Users can browse a menu loaded from a public API, filter it, add items to a shopping cart, and view everything in a slide-in cart panel.
 
 > Fast food that's actually good for you.
@@ -100,4 +100,4 @@ src/
 
 ## Author
 
-Made by [patarakaci1](https://github.com/patarakaci1) as a fullstack web development practice project.
+Made by [patarakaci1](https://github.com/patarakaci1) as a frontend  development practice project.
