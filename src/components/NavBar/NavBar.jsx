@@ -1,20 +1,37 @@
-import React from "react";
 import { useState } from "react";
 import "./NavBar.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { useShoppingCart } from "../../context/ShoppingCartContext";
 
 const NavBar = () => {
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState("Home");
+  const { cartQuantity, openCart } = useShoppingCart();
 
   const NAV_LINKS = [
     { label: "Home", href: "#home" },
     { label: "About", href: "#about" },
     { label: "Rates", href: "#rates" },
+    { label: "Reviews", href: "#reviews" },
+    { label: "Happy Moments", href: "#moments" },
   ];
 
+  const handleNavigation = (label, href) => {
+    setActive(label);
+
+    document.querySelector(href)?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   return (
-    <div className="container">
-      <header className="header">
-        <button className="logo" onClick={() => setActive("Home")}>
+    <header className="header">
+      <div className="container header__inner">
+        <button
+          className="logo"
+          onClick={() => handleNavigation("Home", "#home")}
+        >
           bread<span className="ify">ify</span>
         </button>
 
@@ -24,7 +41,10 @@ const NavBar = () => {
               <li key={link.label}>
                 <a
                   href={link.href}
-                  onClick={() => setActive(link.label)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavigation(link.label, link.href);
+                  }}
                   className={active === link.label ? "active" : "inactive"}
                 >
                   {link.label}
@@ -35,10 +55,15 @@ const NavBar = () => {
         </nav>
 
         <div>
-          <button className="order-btn">order now </button>
+          {cartQuantity > 0 && (
+            <button className="order-btn" onClick={openCart}>
+              <FontAwesomeIcon icon={faCartShopping} />
+              <div className="cart-number">{cartQuantity}</div>
+            </button>
+          )}
         </div>
-      </header>
-    </div>
+      </div>
+    </header>
   );
 };
 

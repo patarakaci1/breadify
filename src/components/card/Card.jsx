@@ -1,7 +1,9 @@
-import React from "react";
 import "./Card.css";
+import { useShoppingCart } from "../../context/ShoppingCartContext";
 
+/** @param {{ id: string | number, image: string, badge?: string, title: string, description: string, calories: string | number, protein: string | number, price: string | number }} props */
 const Card = ({
+  id,
   image,
   badge = "Popular",
   title,
@@ -9,11 +11,23 @@ const Card = ({
   calories,
   protein,
   price,
-  inCart = false,
-  onToggleCart,
 }) => {
+  const {
+    getItemQuantity,
+    increaseCartQuantity,
+    decreaseCartQuantity,
+    removeFromCart,
+  } = /** @type {{
+    getItemQuantity: (id: string | number) => number,
+    increaseCartQuantity: (id: string | number) => void,
+    decreaseCartQuantity: (id: string | number) => void,
+    removeFromCart: (id: string | number) => void,
+  }} */ (useShoppingCart());
+
+  const quantity = getItemQuantity(id);
+
   return (
-    <div className="card container">
+    <div className="meal-card container">
       <img src={image} alt={title} className="card__image" />
 
       <div className="card__info">
@@ -31,19 +45,38 @@ const Card = ({
 
       <div className="card__price-col">
         <span className="card__price">{price}</span>
-        <button
-          className={`card__btn ${inCart ? "card__btn--remove" : "card__btn--add"}`}
-          onClick={onToggleCart}
-        >
-          {inCart ? (
-            "− Remove from cart"
+        <div>
+          {quantity === 0 ? (
+            <button
+              className="card__btn"
+              onClick={() => increaseCartQuantity(id, { image, title, price })}
+            >
+              <span className="card__btn-icon-1">+</span>Add to cart
+            </button>
           ) : (
-            <>
-              <span className="card__btn-icon">+</span>
-              Add to cart
-            </>
+            <div>
+              <button
+                className="card__btn-icon left"
+                onClick={() => decreaseCartQuantity(id)}
+              >
+                -
+              </button>
+              <span>{quantity}</span>
+              <button
+                className="card__btn-icon"
+                onClick={() => increaseCartQuantity(id)}
+              >
+                +
+              </button>
+              <button
+                className="card__btn--remove"
+                onClick={() => removeFromCart(id)}
+              >
+                remove
+              </button>
+            </div>
           )}
-        </button>
+        </div>
       </div>
     </div>
   );
