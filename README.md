@@ -1,70 +1,103 @@
-# Getting Started with Create React App
+# Breadify 🥪
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Breadify is a responsive sandwich restaurant website built with React. Users can browse a menu loaded from a public API, filter it, add items to a shopping cart, and view everything in a slide-in cart panel.
 
-## Available Scripts
+> Fast food that's actually good for you.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Menu from a live API**: sandwiches are fetched from [TheMealDB](https://www.themealdb.com/api.php) with loading and error states.
+- **Filtering**: filter menu items by badge (Popular, New, Chef's pick).
+- **Show more / Show less**: the menu starts with a few items and expands on demand.
+- **Shopping cart**: add items, increase or decrease quantity, remove items, and see the total quantity in the navbar.
+- **Cart drawer**: a slide-in panel (React-Bootstrap Offcanvas) listing every cart item with image, title, price, quantity and line total.
+- **Smooth scrolling navigation**: navbar links and hero buttons scroll to the Home, About, Rates (menu), Reviews and Happy Moments sections.
+- **Happy Moments gallery**: an image grid loaded from the API.
+- **Global state with Context API**: cart state lives in a `ShoppingCartContext` provider and is available to any component through a custom `useShoppingCart` hook.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Tech Stack
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- [React](https://react.dev/) (Create React App)
+- [React Router](https://reactrouter.com/)
+- [React-Bootstrap](https://react-bootstrap.github.io/) / Bootstrap 5 (Offcanvas cart)
+- [Font Awesome](https://fontawesome.com/) icons
+- Plain CSS, one stylesheet per component
+- [TheMealDB API](https://www.themealdb.com/api.php)
 
-### `npm test`
+## Getting Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Prerequisites
 
-### `npm run build`
+- [Node.js](https://nodejs.org/) 18 or newer
+- npm
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+git clone https://github.com/patarakaci1/breadify.git
+cd breadify
+npm install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Run in development
 
-### `npm run eject`
+```bash
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Open [http://localhost:3000](http://localhost:3000) in your browser. The page reloads when you edit files.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Build for production
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+npm run build
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The optimized build is created in the `build` folder.
 
-## Learn More
+## Project Structure
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+src/
+├── components/
+│   ├── about/          # About section
+│   ├── card/           # Single menu item card
+│   ├── cartItems/      # One row inside the cart drawer
+│   ├── end/            # Happy Moments gallery
+│   ├── footer/
+│   ├── Hero/           # Landing section
+│   ├── Meallist/       # Menu list, filters, show more/less
+│   ├── NavBar/
+│   ├── reviewPage/     # Reviews section
+│   └── shoppingCart/   # Cart drawer (Offcanvas)
+├── constants/          # API URL, filters, initial visible count
+├── context/            # ShoppingCartContext (cart state + actions)
+├── pages/
+│   └── Home/           # Page that assembles all sections
+├── App.js
+└── index.js
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## How the Cart Works
 
-### Code Splitting
+1. `ShoppingCartProvider` wraps the app in `App.js` and stores `cartItems` and `isOpen`.
+2. A `Card` calls `increaseCartQuantity(id, { image, title, price })` to add an item. The extra details are saved with the item so the cart can display it.
+3. `cartQuantity` is the sum of all item quantities and is shown on the navbar cart button.
+4. Clicking the cart button calls `openCart()`, which opens the Offcanvas drawer.
+5. The drawer renders a `CartItem` for each entry in `cartItems` and shows the total price.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Notes
 
-### Analyzing the Bundle Size
+- Prices, calories, protein and badges are generated from the meal ID for demo purposes. TheMealDB does not provide them.
+- Cart state is kept in memory, so it resets on page reload.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Possible Improvements
 
-### Making a Progressive Web App
+- Persist the cart in `localStorage`
+- Checkout flow
+- Search by meal name
+- Tests for the cart context
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Author
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Made by [patarakaci1](https://github.com/patarakaci1) as a fullstack web development practice project.
