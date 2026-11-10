@@ -34,11 +34,8 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;
-  filter:
-    drop-shadow(8px 0 0 white)
-    drop-shadow(-8px 0 0 white)
-    drop-shadow(0 8px 0 white)
-    drop-shadow(0 -8px 0 white);
+  filter: drop-shadow(8px 0 0 white) drop-shadow(-8px 0 0 white)
+    drop-shadow(0 8px 0 white) drop-shadow(0 -8px 0 white);
 }
 /* Text */
 .hero-text h1 {
@@ -91,18 +88,111 @@
   font-size: 0.95rem;
   cursor: pointer;
 }
-.spinach{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-250%,25%);
-    min-width: 200px;
-    min-height: 200px;
-    object-fit: cover;
-    z-index: 1;
+.spinach {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-250%, 25%);
+  min-width: 200px;
+  min-height: 200px;
+  object-fit: cover;
+  z-index: 1;
 }
-.spinach img{
-    width: 250px;
-    height: 200px;
-    object-fit: cover;
+.spinach img {
+  width: 250px;
+  height: 200px;
+  object-fit: cover;
+}
+/* Tablet */
+@media (max-width: 992px) {
+  .entry-container {
+    padding: 40px 0;
+    gap: 30px;
+  }
+
+  .hero-text h1 {
+    font-size: 3rem;
+  }
+
+  .entry-container {
+    padding: 40px 0;
+    gap: 30px;
+  }
+
+  .hero-text h1 {
+    font-size: 3rem;
+  }
+
+  .hero-image {
+    min-width: 0;
+  }
+
+  .hero-image img {
+    position: static;
+    transform: none;
+    width: 100%;
+    max-width: 380px;
+    filter: drop-shadow(4px 0 0 white) drop-shadow(-4px 0 0 white)
+      drop-shadow(0 4px 0 white) drop-shadow(0 -4px 0 white);
+  }
+
+  .spinach {
+    display: none;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .entry-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px 0;
+    gap: 24px;
+  }
+
+  .hero-text {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .hero-text h1 {
+    font-size: 2.2rem;
+    letter-spacing: -0.5px;
+    margin-bottom: 16px;
+  }
+
+  .hero-text p {
+    max-width: 100%;
+    margin: 0 auto 20px;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 12px 22px;
+    font-size: 0.9rem;
+  }
+
+  .hero-image {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .hero-image img {
+    position: static;
+    transform: none;
+    width: 100%;
+    max-width: 380px;
+    filter: drop-shadow(4px 0 0 white) drop-shadow(-4px 0 0 white)
+      drop-shadow(0 4px 0 white) drop-shadow(0 -4px 0 white);
+  }
+
+  /* spinach მობილურზე იმალება, რომ ეკრანი არ გადაიტვირთოს */
+  .spinach {
+    display: none;
+  }
 }

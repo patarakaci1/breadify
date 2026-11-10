@@ -149,3 +149,91 @@ button {
   color: white;
   font-weight: bold;
 }
+/* Tablet */
+@media (max-width: 992px) {
+  .meal-card {
+    max-width: 100%;
+    gap: 14px;
+    padding: 12px 14px;
+  }
+
+  .card__info {
+    min-width: 120px;
+  }
+
+  .card__desc-col {
+    padding: 0 14px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .meal-card {
+    display: grid;
+    grid-template-columns: 70px 1fr auto;
+    grid-template-areas:
+      "image info price"
+      "desc  desc desc"
+      "btn   btn  btn";
+    align-items: center;
+    gap: 10px 12px;
+    padding: 12px;
+  }
+
+  .card__image {
+    grid-area: image;
+    width: 60px;
+    height: 60px;
+  }
+
+  .card__info {
+    grid-area: info;
+    min-width: 0;
+  }
+
+  .card__title {
+    font-size: 15px;
+  }
+
+  /* price-col და desc-col-ის შვილები პირდაპირ გრიდში ჩადის */
+  .card__price-col,
+  .card__desc-col {
+    display: contents;
+  }
+
+  .card__price {
+    grid-area: price;
+    font-size: 16px;
+    align-self: start;
+  }
+
+  .card__desc {
+    grid-area: desc;
+    font-size: 12px;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+
+  .card__macros {
+    grid-column: 1 / -1;
+    margin-top: 0;
+    gap: 12px;
+  }
+
+  .card__price-col > div {
+    grid-column: 1 / -1;
+  }
+
+  .card__btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .card__price-col > div > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+}
