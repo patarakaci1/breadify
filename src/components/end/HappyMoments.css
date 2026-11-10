@@ -32,3 +32,32 @@
 .happy-moments-grid img:nth-child(3) {
   grid-row: span 1;
 }
+/* Tablet */
+@media (max-width: 992px) {
+  .happy-moments-grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 140px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .happy-moments {
+    padding: 20px 12px;
+  }
+
+  .happy-moments-title {
+    font-size: 1.5rem;
+    margin-bottom: 14px;
+  }
+
+  .happy-moments-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 120px;
+    gap: 8px;
+  }
+
+  .happy-moments-grid img {
+    border-radius: 6px;
+  }
+}
