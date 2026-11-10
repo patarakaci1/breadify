@@ -42,30 +42,89 @@
 .meal-message {
   text-align: center;
 }
-.meal-title{
-    text-align: center;
-    margin: 20px 0 20px;
+.meal-title {
+  text-align: center;
+  margin: 20px 0 20px;
 }
-.meal-title span{
-    color: var(--main-color);
+.meal-title span {
+  color: var(--main-color);
 }
 .meal-subtitle {
-  max-width: 480px; 
+  max-width: 480px;
   margin: 8px auto 0;
   line-height: 1.5;
   text-align: center;
   color: #666;
   margin: 20px 0 20px;
 }
-.tomato{
+.tomato {
   position: absolute;
   top: -30px;
   left: 70%;
   object-fit: cover;
   z-index: 1;
 }
-.tomato img{
+.tomato img {
   width: 200px;
   height: 200px;
   object-fit: cover;
+}
+/* Tablet */
+@media (max-width: 992px) {
+  .tomato {
+    left: auto;
+    right: 0;
+  }
+
+  .tomato img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .meal-list {
+    gap: 12px;
+  }
+
+  .tomato {
+    top: -10px;
+    right: 0;
+  }
+
+  .tomato img {
+    width: 90px;
+    height: 90px;
+  }
+
+  .meal-title {
+    font-size: 1.8rem;
+    margin: 16px 0;
+  }
+
+  .meal-subtitle {
+    font-size: 0.9rem;
+    margin: 12px auto 16px;
+    padding: 0 8px;
+  }
+
+  /* ფილტრები ერთ ხაზზე, მარჯვნივ სქროლვადი */
+  .meal-filters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .filter-button {
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 7px 14px;
+    font-size: 0.9rem;
+  }
+
+  .show-more-button,
+  .show-less-button {
+    width: calc(100% - 24px);
+  }
 }
